@@ -12,6 +12,7 @@ const WeatherCard = ({
 }) => {
 	const [city, setCity] = useState('')
 	const [changeScreen, setChangeScreen] = useState(false)
+
 	const handleCityChange = e => {
 		setCity(e.target.value)
 	}
@@ -73,7 +74,7 @@ const WeatherCard = ({
 				)}
 				<WeatherInfo weather={weather} fahrenheit={fahrenheit} />
 
-				<WeatherDetails weather={weather} />
+				<WeatherDetails weather={weather} unitSystemToggle={unitSystemToggle} />
 			</div>
 		</div>
 	)

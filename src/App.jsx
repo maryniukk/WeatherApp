@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import './App.css'
 import WeatherCard from './components/WeatherCard'
 
-import './App.css'
 const App = () => {
 	const [fahrenheitToggle, setFahrenheitToggle] = useState(false)
 	const [units, setUnits] = useState('metric')
 	const [weather, setWeather] = useState(null)
+	const [weatherValue, setWeatherValue] = useState(false)
 
 	const unitSystemToggle = () => {
 		setFahrenheitToggle(!fahrenheitToggle)
@@ -23,7 +24,7 @@ const App = () => {
 				`${api.base}weather?q=${city}&units=${units}&APPID=${API_KEY}`
 			)
 			const result = await response.json()
-			console.log(result)
+
 			setWeather(result)
 		} catch (err) {
 			console.log(err)
@@ -31,7 +32,7 @@ const App = () => {
 	}
 
 	return (
-		<div className={`${'bg-[#eeeeee]'} h-screen`}>
+		<div className={`${`bg-[#eeeeee]`} h-screen`}>
 			<div className='h-screen flex items-center justify-center'>
 				<WeatherCard
 					getWeatherApi={getWeatherApi}

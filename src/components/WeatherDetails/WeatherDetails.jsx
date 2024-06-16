@@ -3,7 +3,7 @@ import React from 'react'
 import { FaWind } from 'react-icons/fa'
 import { TiWeatherWindy } from 'react-icons/ti'
 import { WiHumidity } from 'react-icons/wi'
-const WeatherDetails = ({ weather }) => {
+const WeatherDetails = ({ weather, unitSystemToggle }) => {
 	return (
 		<div>
 			{weather && (
@@ -20,7 +20,7 @@ const WeatherDetails = ({ weather }) => {
 						<WiHumidity className='inline-block' />
 					</p>
 					<p className='font-extralight text-xl'>
-						{`Wind: ${weather.wind.speed} m/s `}
+						{`Wind: ${weather.wind.speed} ${unitSystemToggle ? 'm/s' : 'mph'}`}
 						<FaWind className='inline-block' />
 					</p>
 					<p className='font-extralight text-xl'>
