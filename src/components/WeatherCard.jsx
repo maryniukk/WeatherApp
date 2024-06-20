@@ -12,6 +12,7 @@ const WeatherCard = ({
 }) => {
 	const [city, setCity] = useState('')
 	const [changeScreen, setChangeScreen] = useState(false)
+	const [darkMode, setDarkMode] = React.useState(false)
 
 	const handleCityChange = e => {
 		setCity(e.target.value)
@@ -23,16 +24,22 @@ const WeatherCard = ({
 		}
 		getWeatherApi(city)
 	}
-
+	const toggleChangeTheme = () => {
+		setDarkMode(!changeToggle)
+	}
 	return (
 		<div className='flex items-center justify-center min-h-screen'>
 			<div className='w-[700px] h-[500px] bg-[#f4f4f4] rounded-xl text-[#181818]'>
 				{changeScreen && (
 					<Header
+						toggleChangeTheme={toggleChangeTheme}
+						darkMode={darkMode}
+						setDarkMode={setDarkMode}
 						city={city}
 						handleCityChange={handleCityChange}
 						handleGetWeather={handleGetWeather}
 						unitSystemToggle={unitSystemToggle}
+						dar
 					/>
 				)}
 				{!weather && (

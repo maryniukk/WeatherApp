@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import WeatherCard from './components/WeatherCard'
 
-const App = () => {
+const App = ({ darkMode }) => {
 	const [fahrenheitToggle, setFahrenheitToggle] = useState(false)
 	const [units, setUnits] = useState('metric')
 	const [weather, setWeather] = useState(null)
@@ -32,14 +32,16 @@ const App = () => {
 	}
 
 	return (
-		<div className={`${`bg-[#eeeeee]`} h-screen`}>
-			<div className='h-screen flex items-center justify-center'>
-				<WeatherCard
-					getWeatherApi={getWeatherApi}
-					unitSystemToggle={unitSystemToggle}
-					weather={weather}
-					fahrenheit={fahrenheitToggle}
-				/>
+		<div>
+			<div className={`${`bg-[#eeeeee] dark:bg-slate-900`} h-screen`}>
+				<div className='h-screen flex items-center justify-center'>
+					<WeatherCard
+						getWeatherApi={getWeatherApi}
+						unitSystemToggle={unitSystemToggle}
+						weather={weather}
+						fahrenheit={fahrenheitToggle}
+					/>
+				</div>
 			</div>
 		</div>
 	)

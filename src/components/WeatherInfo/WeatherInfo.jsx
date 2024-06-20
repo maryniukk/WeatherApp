@@ -1,7 +1,25 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri'
+
+import { BsMoonStars } from 'react-icons/bs'
+import GoSun from '/src/assets/weatherIcons/GoSun.svg'
+
 const WeatherInfo = ({ weather, fahrenheit }) => {
+	const weatherIconArray = [
+		{
+			id: '01d',
+			icon: GoSun,
+		},
+		{
+			id: '01n',
+			icon: BsMoonStars,
+		},
+		{
+			id: '02d',
+		},
+	]
+
 	return (
 		<div className='pt-10'>
 			{weather && (
