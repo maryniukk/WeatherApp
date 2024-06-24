@@ -1,24 +1,62 @@
 import { motion } from 'framer-motion'
-import React from 'react'
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri'
 
-import { BsMoonStars } from 'react-icons/bs'
-import GoSun from '/src/assets/weatherIcons/GoSun.svg'
+import Sunny from '/src/assets/weatherIcons/Sunny.svg'
+import cloudlyDay from '/src/assets/weatherIcons/cloudlyDay.svg'
+import cloudlyMostlyNight from '/src/assets/weatherIcons/cloudlyMostlyNight.svg'
+import cloudlyWithLittleSun from '/src/assets/weatherIcons/cloudlyWithLittleSun.svg'
+import BrightNight from '/src/assets/weatherIcons/moon.svg'
+import partlyCloudyNight from '/src/assets/weatherIcons/pcloudy-n.svg'
+import partlyCloudlyDay from '/src/assets/weatherIcons/pcloudy.svg'
 
 const WeatherInfo = ({ weather, fahrenheit }) => {
+
 	const weatherIconArray = [
+    {
+        id: '01d',
+				icon: Sunny,
+        description: 'Ясное небо (днем)',
+    },
+    {
+        id: '01n',
+				icon: BrightNight,
+        description: 'Ясное небо (ночью)',
+    },
+    {
+        id: '02d',
+				icon: partlyCloudlyDay,
+        description: 'Малооблачно (днем)',
+    },
+    {
+        id: '02n',
+				icon: partlyCloudyNight,
+        description: 'Малооблачно (ночью)',
+    },
+    {
+        id: '03d',
+				icon: cloudlyWithLittleSun,
+        description: 'Облачно с прояснениями (днем)',
+
+    },
 		{
-			id: '01d',
-			icon: GoSun,
-		},
-		{
-			id: '01n',
-			icon: BsMoonStars,
-		},
-		{
-			id: '02d',
-		},
+			id: '03n',
+			icon: cloudlyMostlyNight,
+			description: 'Облачно с прояснениями (ночью)',
+		}
+	,
+	{
+		id: '04d',
+		icon: cloudlyDay,
+		description: 'Пасмурно (днем)',
+	}
 	]
+
+
+	const weatherIcon = () => {
+		weatherIconArray.find(item => item.id === weather.weather[0].icon) 
+	} 
+
+
 
 	return (
 		<div className='pt-10'>
@@ -52,7 +90,7 @@ const WeatherInfo = ({ weather, fahrenheit }) => {
 						{weather.weather && (
 							<img
 								className='w-[60px] h-[60px]'
-								src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+								src={`http://openweathermap.org/img/wn/${weatherIcon.id}@2x.png`}
 								alt='Weather icon'
 							/>
 						)}
@@ -64,3 +102,5 @@ const WeatherInfo = ({ weather, fahrenheit }) => {
 }
 
 export default WeatherInfo
+
+

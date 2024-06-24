@@ -39,7 +39,7 @@ const WeatherCard = ({
 						handleCityChange={handleCityChange}
 						handleGetWeather={handleGetWeather}
 						unitSystemToggle={unitSystemToggle}
-						dar
+						
 					/>
 				)}
 				{!weather && (
