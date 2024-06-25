@@ -6,7 +6,7 @@ const App = ({ darkMode }) => {
 	const [fahrenheitToggle, setFahrenheitToggle] = useState(false)
 	const [units, setUnits] = useState('metric')
 	const [weather, setWeather] = useState(null)
-	const [weatherValue, setWeatherValue] = useState(false)
+	const [dark, setDark] = useState(false)
 
 	const unitSystemToggle = () => {
 		setFahrenheitToggle(!fahrenheitToggle)

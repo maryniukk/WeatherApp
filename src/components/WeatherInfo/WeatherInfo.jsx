@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri'
-
 import Sunny from '/src/assets/weatherIcons/Sunny.svg'
 import cloudlyDay from '/src/assets/weatherIcons/cloudlyDay.svg'
 import cloudlyMostlyNight from '/src/assets/weatherIcons/cloudlyMostlyNight.svg'
@@ -10,6 +10,7 @@ import partlyCloudyNight from '/src/assets/weatherIcons/pcloudy-n.svg'
 import partlyCloudlyDay from '/src/assets/weatherIcons/pcloudy.svg'
 
 const WeatherInfo = ({ weather, fahrenheit }) => {
+const [foundIcon, setFoundIcon] = useState(null)
 
 	const weatherIconArray = [
     {
@@ -53,10 +54,15 @@ const WeatherInfo = ({ weather, fahrenheit }) => {
 
 
 	const weatherIcon = () => {
-		weatherIconArray.find(item => item.id === weather.weather[0].icon) 
+		const found = weatherIconArray.find(element => element.id === weather.weather[0].icon)
+		setFoundIcon(found ? found.icon : null)
 	} 
 
-
+  useEffect(() => {
+		if (weather && weatherIconArray) {
+				weatherIcon();
+		}
+}, [weather]);
 
 	return (
 		<div className='pt-10'>
@@ -87,13 +93,13 @@ const WeatherInfo = ({ weather, fahrenheit }) => {
 						</div>
 					</motion.div>
 					<div className='pr-8'>
-						{weather.weather && (
-							<img
-								className='w-[60px] h-[60px]'
-								src={`http://openweathermap.org/img/wn/${weatherIcon.id}@2x.png`}
-								alt='Weather icon'
-							/>
-						)}
+					{foundIcon && (
+                            <img
+                                className='w-[60px] h-[60px]'
+                                src={foundIcon}
+                                alt='Weather icon'
+                            />
+                        )}
 					</div>
 				</div>
 			)}
