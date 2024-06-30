@@ -1,0 +1,10 @@
+{
+  "printWidth": 110,
+  "trailingComma": "all",
+  "semi": false,
+  "singleQuote": true,
+  "react/jsx-curly-newline": false,
+  "tabWidth": 2,
+  "useTabs": false,
+  "max-blank-lines": 1
+}

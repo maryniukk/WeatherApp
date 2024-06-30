@@ -9,38 +9,35 @@ const WeatherCard = ({
 	unitSystemToggle,
 	weather,
 	fahrenheit,
+	city,
+	setCity,
 }) => {
-	const [city, setCity] = useState('')
 	const [changeScreen, setChangeScreen] = useState(false)
-	const [darkMode, setDarkMode] = React.useState(false)
+	const [toggleSystem, setToggleSystem] = useState(false) // смена системы F/C
 
 	const handleCityChange = e => {
 		setCity(e.target.value)
 	}
 
-	const handleGetWeather = () => {
+	const handleGetWeather = () => { // проверка на пустое поле
 		if (city.trim() === '') {
 			return
 		}
 		getWeatherApi(city)
 	}
-	const toggleChangeTheme = () => {
-		setDarkMode(!changeToggle)
-	}
+
 	return (
-		<div className='flex items-center justify-center min-h-screen'>
-			<div className='w-[700px] h-[500px] bg-[#f4f4f4] rounded-xl text-[#181818]'>
-				{changeScreen && (
-					<Header
-						toggleChangeTheme={toggleChangeTheme}
-						darkMode={darkMode}
-						setDarkMode={setDarkMode}
-						city={city}
+	<div className='flex items-center justify-center min-h-screen'>
+		<div className='w-[700px] h-[500px] bg-[#f4f4f4] rounded-xl text-[#181818]'>
+			{changeScreen && (
+				<Header
+
 						handleCityChange={handleCityChange}
 						handleGetWeather={handleGetWeather}
 						unitSystemToggle={unitSystemToggle}
-						
-					/>
+						toggleSystem={toggleSystem}
+						setToggleSystem={setToggleSystem}
+				/>
 				)}
 				{!weather && (
 					<div className='text-center justify-center flex flex-col mt-20'>
@@ -68,7 +65,8 @@ const WeatherCard = ({
 												whileInView={{ opacity: 1 }}
 												transition={{ duration: 1, ease: 'easeInOut' }}
 												animate={{ y: 60 }}
-												className='btn font-extralight text-xl bg-[#181818] text-[#fcfcfc] hover:bg-[#323232]'
+												className='btn font-extralight text-xl bg-[#181818]
+												text-[#fcfcfc] hover:bg-[#323232]'
 											>
 												Get Started
 											</motion.button>
@@ -79,8 +77,7 @@ const WeatherCard = ({
 						</div>
 					</div>
 				)}
-				<WeatherInfo weather={weather} fahrenheit={fahrenheit} />
-
+				<WeatherInfo toggleSystem={toggleSystem} weather={weather} fahrenheit={fahrenheit} />
 				<WeatherDetails weather={weather} unitSystemToggle={unitSystemToggle} />
 			</div>
 		</div>

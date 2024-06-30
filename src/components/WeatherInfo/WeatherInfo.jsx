@@ -1,70 +1,22 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri'
-import Sunny from '/src/assets/weatherIcons/Sunny.svg'
-import cloudlyDay from '/src/assets/weatherIcons/cloudlyDay.svg'
-import cloudlyMostlyNight from '/src/assets/weatherIcons/cloudlyMostlyNight.svg'
-import cloudlyWithLittleSun from '/src/assets/weatherIcons/cloudlyWithLittleSun.svg'
-import BrightNight from '/src/assets/weatherIcons/moon.svg'
-import partlyCloudyNight from '/src/assets/weatherIcons/pcloudy-n.svg'
-import partlyCloudlyDay from '/src/assets/weatherIcons/pcloudy.svg'
+import weatherIconArray from '/src/components/WeatherInfo/IconArray.js'
 
-const WeatherInfo = ({ weather, fahrenheit }) => {
+const WeatherInfo = ({ weather, fahrenheit,toggleSystem }) => {
+
 const [foundIcon, setFoundIcon] = useState(null)
-
-	const weatherIconArray = [
-    {
-        id: '01d',
-				icon: Sunny,
-        description: 'Ясное небо (днем)',
-    },
-    {
-        id: '01n',
-				icon: BrightNight,
-        description: 'Ясное небо (ночью)',
-    },
-    {
-        id: '02d',
-				icon: partlyCloudlyDay,
-        description: 'Малооблачно (днем)',
-    },
-    {
-        id: '02n',
-				icon: partlyCloudyNight,
-        description: 'Малооблачно (ночью)',
-    },
-    {
-        id: '03d',
-				icon: cloudlyWithLittleSun,
-        description: 'Облачно с прояснениями (днем)',
-
-    },
-		{
-			id: '03n',
-			icon: cloudlyMostlyNight,
-			description: 'Облачно с прояснениями (ночью)',
-		}
-	,
-	{
-		id: '04d',
-		icon: cloudlyDay,
-		description: 'Пасмурно (днем)',
-	}
-	]
-
-
-	const weatherIcon = () => {
-		const found = weatherIconArray.find(element => element.id === weather.weather[0].icon)
+const weatherIcon = () => {
+	const found = weatherIconArray.find(element => element.id === weather.weather[0].icon)
 		setFoundIcon(found ? found.icon : null)
-	} 
-
-  useEffect(() => {
+	}
+	useEffect(() => {
 		if (weather && weatherIconArray) {
 				weatherIcon();
 		}
-}, [weather]);
+		}, [weather]);
 
-	return (
+return (
 		<div className='pt-10'>
 			{weather && (
 				<div className='flex justify-between'>
@@ -94,12 +46,12 @@ const [foundIcon, setFoundIcon] = useState(null)
 					</motion.div>
 					<div className='pr-8'>
 					{foundIcon && (
-                            <img
-                                className='w-[60px] h-[60px]'
-                                src={foundIcon}
-                                alt='Weather icon'
-                            />
-                        )}
+         	 <img
+          	className='w-[60px] h-[60px]'
+         	 	src={foundIcon}
+         	 	alt='Weather icon'
+          />
+          )}
 					</div>
 				</div>
 			)}
