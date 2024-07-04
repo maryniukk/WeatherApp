@@ -28,10 +28,9 @@ const WeatherCard = ({
 
 	return (
 	<div className='flex items-center justify-center min-h-screen'>
-		<div className='w-[700px] h-[500px] bg-[#f4f4f4] rounded-xl text-[#181818]'>
+		<div className='w-[900px] h-[700px] bg-[#fff] rounded-3xl text-[#111] dark:bg-[#111015]'>
 			{changeScreen && (
 				<Header
-
 						handleCityChange={handleCityChange}
 						handleGetWeather={handleGetWeather}
 						unitSystemToggle={unitSystemToggle}
@@ -52,7 +51,7 @@ const WeatherCard = ({
 										initial={{ opacity: 0 }}
 										whileInView={{ opacity: 1 }}
 										transition={{ duration: 1, ease: 'easeInOut' }}
-										className='text-4xl font-extralight '
+										className='text-4xl font-extralight text-center justify-center text-[#111] dark:text-[#fff]'
 										animate={{ y: 80 }}
 									>
 										Hi👋🏻, and welcome to the Weather App🌦️!
@@ -65,8 +64,8 @@ const WeatherCard = ({
 												whileInView={{ opacity: 1 }}
 												transition={{ duration: 1, ease: 'easeInOut' }}
 												animate={{ y: 60 }}
-												className='btn font-extralight text-xl bg-[#181818]
-												text-[#fcfcfc] hover:bg-[#323232]'
+												className='btn font-extralight text-xl bg-[#fff]
+												text-[#111] hover:bg-[#f0f0f0] dark:bg-[#1B1B1D] dark:text-[#fff] dark:hover:bg-[#323232]'
 											>
 												Get Started
 											</motion.button>

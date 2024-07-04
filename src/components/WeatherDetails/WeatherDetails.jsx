@@ -15,15 +15,15 @@ const WeatherDetails = ({ weather, unitSystemToggle }) => {
 					animate={{ y: 0 }}
 					className='pl-10 pt-5'
 				>
-					<p className='font-extralight text-xl'>
+					<p className='font-extralight text-xl dark:text-[#FEFEFE]'>
 						{`Humidity: ${weather.main.humidity}%`}
 						<WiHumidity className='inline-block' />
 					</p>
-					<p className='font-extralight text-xl'>
+					<p className='font-extralight text-xl dark:text-[#FEFEFE]'>
 						{`Wind: ${weather.wind.speed} ${unitSystemToggle ? 'm/s' : 'mph'}`}
 						<FaWind className='inline-block' />
 					</p>
-					<p className='font-extralight text-xl'>
+					<p className='font-extralight text-xl dark:text-[#FEFEFE]'>
 						{`Pressure: ${weather.main.pressure} hPa`}
 						<TiWeatherWindy className='inline-block' />
 					</p>
