@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, {useState} from 'react';
 import { GoSearch } from "react-icons/go";
-
+import SearchIcon from "./SearchIcon.jsx";
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
 import DarkThemeButton from './DarkThemeButton';
 
@@ -17,7 +17,6 @@ const Header = ({
     const darkModeHandler = () => {
         setDarkMode(!darkMode);
         document.body.classList.toggle('dark');
-        console.log();
     }
 
 
@@ -31,7 +30,7 @@ const Header = ({
                     className="mr-1 mt-auto mb-auto"
                 >
                     <motion.button onClick={handleGetWeather}>
-                        <GoSearch className='text-xl text-current dark:text-gray-100'/>
+                        <SearchIcon />
                     </motion.button>
                 </motion.div>
                 <motion.input

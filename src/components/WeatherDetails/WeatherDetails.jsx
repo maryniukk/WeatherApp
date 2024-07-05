@@ -3,6 +3,7 @@ import React from 'react'
 import { FaWind } from 'react-icons/fa'
 import { TiWeatherWindy } from 'react-icons/ti'
 import { WiHumidity } from 'react-icons/wi'
+import {GoSearch} from "react-icons/go";
 const WeatherDetails = ({ weather, unitSystemToggle }) => {
 	return (
 		<div>
