@@ -6,6 +6,7 @@ const App = () => {
   const [fahrenheitToggle, setFahrenheitToggle] = useState(false);
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
+  const [weatherForecast, setWeatherForecast] = useState(null);
   const [city, setCity] = useState("");
 
 
@@ -21,7 +22,7 @@ const App = () => {
   const api = {
     base: "https://api.openweathermap.org/data/2.5/",
   };
-
+//актуальная погода
   const getWeatherApi = async (city, unitsChange = units) => {
     try {
       const response = await fetch(
@@ -34,17 +35,34 @@ const App = () => {
     }
   };
 
+//получение прогноза погоды
+  const getWeatherForecastApi = async (city, unitsChange = 'metric') => {
+    try {
+      const response = await fetch(
+          `${api.base}forecast?q=${city}&units=${unitsChange}&APPID=${API_KEY}`,
+      );
+      const result = await response.json();
+      setWeatherForecast(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
   return (
     <div>
       <div className='bg-[#EEF0F2] h-screen dark:bg-[#2E2E2E]'>
         <div className="h-screen flex items-center justify-center">
           <WeatherCard
-
+              getWeatherForecastApi={getWeatherForecastApi}
               city={city}
               setCity={setCity}
               getWeatherApi={getWeatherApi}
               unitSystemToggle={unitSystemToggle}
               weather={weather}
+              setWeather={setWeather}
+              weatherForecast={weatherForecast}
               fahrenheit={fahrenheitToggle}
           />
         </div>

@@ -10,6 +10,7 @@ const Header = ({
                     handleCityChange,
                     handleGetWeather,
                     unitSystemToggle,
+
                 }) => {
 
     const [darkMode, setDarkMode] = useState(false);
@@ -52,10 +53,10 @@ const Header = ({
                 <label className="swap mr-5">
                     <input onChange={unitSystemToggle} type="checkbox" />
                     <div className="swap-on">
-                        <RiFahrenheitLine className="text-xl text-[#fcfcfc] dark:text-[#fefefe]" />
+                        <RiFahrenheitLine className="text-xl text-[#111] dark:text-[#fff]" />
                     </div>
                     <div className="swap-off">
-                        <RiCelsiusLine className="text-xl text-[#fcfcfc] " />
+                        <RiCelsiusLine className="text-xl text-[#111] dark:text-[#fff]" />
                     </div>
                 </label>
                 <DarkThemeButton darkModeHandler={darkModeHandler} darkMode={darkMode} />
