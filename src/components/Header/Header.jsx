@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import React, {useState} from 'react';
-import { GoSearch } from "react-icons/go";
+import React, { useEffect, useState } from 'react'
 import SearchIcon from "./SearchIcon.jsx";
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
 import DarkThemeButton from './DarkThemeButton';
@@ -10,7 +9,6 @@ const Header = ({
                     handleCityChange,
                     handleGetWeather,
                     unitSystemToggle,
-
                 }) => {
 
     const [darkMode, setDarkMode] = useState(false);
@@ -22,7 +20,7 @@ const Header = ({
 
 
     return (
-        <div className="py-5 px-10 flex justify-center">
+        <div className="py-5 px-5 flex justify-center">
             <div className="m-auto flex">
                 <motion.div
                     initial={{ opacity: 0 }}

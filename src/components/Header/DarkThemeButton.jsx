@@ -1,9 +1,6 @@
 import React from 'react'
-import cn from "classnames";
 
-const DarkThemeButton = ({ darkModeHandler, darkMode }) => {
-
-
+const DarkThemeButton = ({ darkModeHandler }) => {
 
   return (
     <span className='text-lg'>

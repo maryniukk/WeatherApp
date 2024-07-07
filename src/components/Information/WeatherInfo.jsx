@@ -1,7 +1,7 @@
 	import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri'
-import weatherIconArray from '/src/components/WeatherInfo/IconArray.js'
+import weatherIconArray from '/src/components/Information/IconArray.js'
 
 const WeatherInfo = ({ weather, fahrenheit,toggleSystem, getWeatherForecastApi }) => {
 	const [foundIcon, setFoundIcon] = useState(null)

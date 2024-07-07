@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import WeatherCard from "./components/WeatherCard";
+import WeatherCard from "./components/Card/WeatherCard.jsx";
 const App = () => {
 
   const [fahrenheitToggle, setFahrenheitToggle] = useState(false);
@@ -11,11 +11,11 @@ const App = () => {
 
 
 
-  const unitSystemToggle = () => {
-    setFahrenheitToggle(!fahrenheitToggle); // смена системы F/C
-  const unitsChange = fahrenheitToggle ? "metric" : "imperial";
-  setUnits(unitsChange);
-  getWeatherApi(city, unitsChange).then(r => console.log(r));3
+    const unitSystemToggle = () => {
+      setFahrenheitToggle(!fahrenheitToggle); // смена системы F/C
+    const unitsChange = fahrenheitToggle ? "metric" : "imperial";
+      setUnits(unitsChange);
+      getWeatherApi(city, unitsChange).then(r => console.log(r));
   };
 
   const API_KEY = "b7ec4e74a337a34d102c47eb43de2ed5";
@@ -35,27 +35,11 @@ const App = () => {
     }
   };
 
-//получение прогноза погоды
-  const getWeatherForecastApi = async (city, unitsChange = 'metric') => {
-    try {
-      const response = await fetch(
-          `${api.base}forecast?q=${city}&units=${unitsChange}&APPID=${API_KEY}`,
-      );
-      const result = await response.json();
-      setWeatherForecast(result);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-
-
   return (
     <div>
       <div className='bg-[#EEF0F2] h-screen dark:bg-[#2E2E2E]'>
         <div className="h-screen flex items-center justify-center">
           <WeatherCard
-              getWeatherForecastApi={getWeatherForecastApi}
               city={city}
               setCity={setCity}
               getWeatherApi={getWeatherApi}
