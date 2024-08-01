@@ -74,7 +74,7 @@ const WeatherCard = ({
 			  fahrenheit={fahrenheit}
 		  />)}
 		  {selectedOption === '5 days' && (
-			  <WeatherForecast />
+			  <WeatherForecast city={city}  />
 		  )}
       </div>
     </div>

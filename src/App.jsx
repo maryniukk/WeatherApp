@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import WeatherCard from "./components/Card/WeatherCard.jsx";
+import React, { useState } from "react"
+import "./App.css"
+import WeatherCard from "./components/Card/WeatherCard.jsx"
 const App = () => {
 
   const [fahrenheitToggle, setFahrenheitToggle] = useState(false);
